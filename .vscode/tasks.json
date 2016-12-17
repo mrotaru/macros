@@ -1,0 +1,17 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  // "(New-Object -ComObject WScript.Shell).Run(\"\"\"C:\\Program Files\\AutoHotkey\\AutoHotkeyU64.exe $file\"\"\", 1, $false)"
+  "version": "0.1.0",
+  "windows": { "command": "powershell" },
+  "suppressTaskName": true,
+  "tasks": [
+    {
+      "isBuildCommand": true,
+      "taskName": "test",
+      "args": [
+        "(New-Object -ComObject WScript.Shell).Run(\"\"\"C:\\Program Files\\AutoHotkey\\AutoHotkeyU64.exe $file\"\"\", 1, $false)"
+        ]
+    }
+  ]
+}

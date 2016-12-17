@@ -1,4 +1,5 @@
 #Persistent
+#SingleInstance force
 
 ::@em::mihai.rotaru@gmx.com
 ::@pc::NW4 2RY
@@ -13,35 +14,26 @@ F6::
 ::@wem::mihai.rotaru@miceanddice.com
 ::@wpc::
 
-F5::
-  WinGet, JournalWindowID , ID, "JOURNAL.md", , , 
+SetTitleMatchMode 1
 
-  ; if the current window is JOURNAL:
-  ; - bring previous ID to foreground
-  ; - if no longer exists, minimize JOURNAL
-  if (JournalWindowID = WinExist("A")) {
-    if (WinExist(ahk_id %PreviousWindowId%)) {
+CapsLock::
+  WinGet, JournalWindowID , ID, JOURNAL.md
+  WinGet, currentWindow, ID, A
+  if (JournalWindowID = currentWindow) {
+    if (WinExist("ahk_id" PreviousWindowId)) {
       WinActivate, ahk_id %PreviousWindowId%
     } else {
       WinMinimize, "A"
     }
   } else {
-  ; if no, then:
-  ; - save the active window's ID
-  ; - see if we have the JOURNAL window open
-  ;   - if yes, bring it to foreground, and maximize it
-  ;   - if no, start the editor with the JOURNAL, then maximize
-    PreviousWindowId := WinExist("A")
+    WinGet, PreviousWindowId, ID, A
     if (WinExist("JOURNAL.md")) {
-      WinActivate, "JOURNAL.md"
-      WinMaximize
+      WinActivate, JOURNAL.md
       JournalWindowID := WinExist("A")
     } else {
       Run, "C:\Program Files (x86)\Microsoft VS Code Insiders\Code - Insiders.exe" "C:\Users\Mihai\Sync\notes\JOURNAL.md", , Max
     }
   }
 
-
-  ; if yes, put it in the background
 ; - open journal
 ; - toggle todo list
