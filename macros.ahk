@@ -14,7 +14,7 @@ F6::
 ::@wem::mihai.rotaru@miceanddice.com
 ::@wpc::
 
-SetTitleMatchMode 1
+SetTitleMatchMode 2
 
 CapsLock::
   WinGet, JournalWindowID , ID, JOURNAL.md
